@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 """
 blastn_add_taxonomy   V1.0    martenhoogeveen@naturalis.nl
 This script adds the taxonomy to the BLAST output. The input is de folder path that contains the blast results.

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 """
 blastn_add_taxonomy   V1.0    martenhoogeveen@naturalis.nl
 This script adds the taxonomy to the BLAST output. The input is de folder path that contains the blast results.
@@ -45,9 +45,11 @@ def add_taxonomy(file, genbank, bold, gbif, privatebold, unite, silva):
                 output2.write(line_taxonomy.strip()+"\n")
                 if args.taxonomy_source == "GBIF":
                     line_taxonomy = gbif.find_gbif_taxonomy(line_taxonomy)
-                    output.write(line_taxonomy.encode('utf-8').strip()+"\n")
+                    print(line_taxonomy)
+                    output.write(line_taxonomy.strip()+"\n")
                 elif args.taxonomy_source == "default":
-                    output.write(line_taxonomy.encode('utf-8').strip()+"\n")
+                    print(line_taxonomy)
+                    output.write(line_taxonomy.strip()+"\n")
 
 def process_files():
     genbank = Genbank(args.rankedlineage, args.merged)

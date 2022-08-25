@@ -1,11 +1,11 @@
 wget http://rs.gbif.org/datasets/backbone/backbone-current.zip
 unzip -j backbone-current.zip "Taxon.tsv"
-python add_gbif_to_database.py
-sh get_bold_taxonomy.sh
-python add_bold_taxonomy.py
-sudo wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.zip
-unzip -j new_taxdump.zip "rankedlineage.dmp"
-unzip -j new_taxdump.zip "merged.dmp"
+python3 add_gbif_to_database.py
+#sh get_bold_taxonomy.sh
+#python3 add_bold_taxonomy.py
+#sudo wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.zip
+#unzip -j new_taxdump.zip "rankedlineage.dmp"
+#unzip -j new_taxdump.zip "merged.dmp"
 
 
 

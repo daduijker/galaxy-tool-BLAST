@@ -25,7 +25,7 @@ class Genbank:
         mergedDict = {}
         with open(merged) as merged:
             for taxid in merged:
-                a = map(str.strip, taxid.split("|"))
+                a = [item.strip() for item in taxid.split("|")] #map(str.strip, taxid.split("|"))
                 mergedDict[a[0]]=a[1]
         return mergedDict
 
