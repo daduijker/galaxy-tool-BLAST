@@ -2,7 +2,7 @@ categories:
   - Metagenomics
 description:  BLASTn from naturalis
 homepage_url: https://github.com/naturalis/galaxy-tool-BLAST
-name: naturalis_BLAST
+name: naturalis_blast
 owner: duijker.d
 remote_repository_url: https://gitlab.com/LCAB-Bioinformatics/galaxy/naturalis/galaxy-tool-BLAST
 type: unrestricted
