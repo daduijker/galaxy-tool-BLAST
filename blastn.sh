@@ -1,5 +1,5 @@
 #!/bin/bash
-outlocation=$(mktemp -d /galaxy_fs/tmp/XXXXXX)
+outlocation=$(mktemp -d)
 SCRIPTDIR=$(dirname "$(readlink -f "$0")")
 
 python $SCRIPTDIR"/blastn_wrapper.py" -it $1 -i $2 -db $3 -bt $4 -bm $5 -of $outlocation -outfmt $6 -cov "${10}" -id "${11}" -dbt "${13}"
@@ -22,7 +22,7 @@ then
 #below the code to call the script to add taxonomy and move the files to the galaxy output
 elif [ $6 == "custom_taxonomy" ] && [ "${9}" != "none" ]
 then
-    $SCRIPTDIR"/blastn_add_taxonomy.py" -i $outlocation'/files/' -t /galaxy_fs/blast_databases/taxonomy/rankedlineage.dmp -m /galaxy_fs/blast_databases/taxonomy/merged.dmp -ts "${9}" -taxonomy_db /home/galaxy/gbif_taxonmatcher
+    $SCRIPTDIR"/blastn_add_taxonomy.py" -i $outlocation'/files/' -t /exports/nas/data2/Database_Archive/BLAST/taxonomy/rankedlineage.dmp -m /exports/nas/data2/Database_Archive/BLAST/taxonomy/merged.dmp -ts "${9}" -taxonomy_db /exports/nas/data2/Database_Archive/BLAST/taxonomy/gbif_taxonmatcher
     if [ $1 == "zip" ]
     then
         zip -r -j $outlocation"/blast_output.zip" $outlocation'/files/'*taxonomy_*'.tabular' --quiet
