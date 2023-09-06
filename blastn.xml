@@ -9,7 +9,7 @@
         bash '$__tool_directory__/blastn.sh'
         $input_type.type
         $input_type.input
-        $database_type.database
+        '$database_type.database.fields.path'.fa
         $task
         $max_target_seqs
         $output_format.output_format_type
@@ -48,8 +48,9 @@
         </macro>
         <macro name="local_databases">
         <param name="database" type="select" multiple="true" label="Database">
-	    <!-- <option value="/extend/blast_databases/genbank/nt" label="genbankfull">Genbank (2020-03-03)</option>
-            -->
+            <options from_data_table="blastdb"/>
+        </param>
+        <!-- <param name="database" type="select" multiple="true" label="Database">
             <option value="/galaxy_fs/blast_databases/CO1/CO1.fa" label="genbankco1">Genbank CO1 (2021-11-16)</option>
             <option value="/galaxy_fs/blast_databases/12S/12S.fa" label="genbank12S">Genbank 12S (2021-11-16)</option>
             <option value="/galaxy_fs/blast_databases/16S/16S.fa" label="genbank16S">Genbank 16S (2021-11-16)</option>
@@ -60,7 +61,7 @@
             <option value="/galaxy_fs/blast_databases/trnl/trnl.fa" label="genbanktrnl">Genbank trnl (2021-11-16)</option>
             <option value="/galaxy_fs/blast_databases/bacterial_genome_selection/bacterial_genome_selection.fa" label="genbankbacterialgenome">Genbank bacterial genome selection (2021-11-16)</option>
             <option value="/galaxy_fs/blast_databases/SILVA/SILVA_138.1_SSUParc_tax_silva_taxonomy.fasta" label="silva">SILVA v138.1</option>
-	</param>
+	    </param> -->
         </macro>
         <macro name="user_input_fasta">
             <param format="fasta" name="database" type="data" label="fasta file"/>
