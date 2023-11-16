@@ -9,7 +9,7 @@
         bash '$__tool_directory__/blastn.sh'
         $input_type.type
         $input_type.input
-        '$database_type.database.fields.path'.fa
+        '$database_type.database.fields.path'
         $task
         $max_target_seqs
         $output_format.output_format_type
