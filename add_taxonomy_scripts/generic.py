@@ -13,7 +13,7 @@ class Generic:
         phylum = taxonomyList[-6] if taxonomyList[-6] else "unknown phylum"
         kingdom = taxonomyList[-7] if taxonomyList[-7] else "unknown kingdom"
         superkingdom = taxonomyList[-8] if taxonomyList[-8] else "unknown superkingdom"
-        taxonomy = [superkingdom, kingdom, phylum, classe, order, family, genus, species]
+        taxonomy = [kingdom, phylum, classe, order, family, genus, species]
 
         newLine = line.strip().split("\t")
         print(newLine[1])
