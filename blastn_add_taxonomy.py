@@ -67,7 +67,7 @@ def process_files():
         gbif = ""
     files = [x for x in sorted(glob.glob(args.blastinputfolder.strip() + "/*.tabular"))]
     for file in files:
-        add_taxonomy(file, genbank, bold, gbif, privatebold, unite, silva)
+        add_taxonomy(file, genbank, bold, gbif, privatebold, unite, silva, generic)
 
 def main():
     process_files()
