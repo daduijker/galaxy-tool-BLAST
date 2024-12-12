@@ -10,6 +10,7 @@ from add_taxonomy_scripts.bold import Bold
 from add_taxonomy_scripts.privatebold import PrivateBold
 from add_taxonomy_scripts.unite import Unite
 from add_taxonomy_scripts.silva import Silva
+from add_taxonomy_scripts.generic import Generic
 import sqlite3
 
 # Retrieve the commandline arguments
@@ -22,7 +23,7 @@ parser.add_argument('-o', '--output', metavar='output', dest='output', type=str,
 parser.add_argument('-taxonomy_db', dest='taxonomy_db', type=str, required=False)
 args = parser.parse_args()
 
-def add_taxonomy(file, genbank, bold, gbif, privatebold, unite, silva):
+def add_taxonomy(file, genbank, bold, gbif, privatebold, unite, silva, generic):
     with open(file, "r") as blasthits, open(args.blastinputfolder.strip() + "/taxonomy_"+ os.path.basename(file), "a") as output, open(args.blastinputfolder.strip() + "/orginaltaxonomy_"+ os.path.basename(file), "a") as output2:
         for line in blasthits:
             if line.split("\t")[0] == "#Query ID":
@@ -39,6 +40,8 @@ def add_taxonomy(file, genbank, bold, gbif, privatebold, unite, silva):
                     line_taxonomy = unite.find_unite_taxonomy(line)
                 elif line.split("\t")[1].split("|")[0] == "silva":
                     line_taxonomy = silva.find_silva_taxonomy(line)
+                elif line.split("\t")[1].split("|")[0].strip(">").isalpha():
+                    line_taxonomy = generic.find_generic_taxonomy(line)
                 else:
                     line_taxonomy = genbank.find_genbank_taxonomy(line)
 
@@ -57,6 +60,7 @@ def process_files():
     privatebold = PrivateBold()
     unite = Unite()
     silva = Silva()
+    generic = Generic()
     if args.taxonomy_source == "GBIF":
         gbif = Gbif(args.taxonomy_db)
     else:
