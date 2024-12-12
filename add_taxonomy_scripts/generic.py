@@ -5,6 +5,7 @@ class Generic:
         databaseSource = line.split("\t")[1].split("|")[0].strip(">")
         print(taxonomyList)
         species = taxonomyList[-1] if taxonomyList[-1] else "unknown species"
+        species = species.replace("_", " ")
         genus = taxonomyList[-2] if taxonomyList[-2] else "unknown genus"
         family = taxonomyList[-3] if taxonomyList[-3] else "unknown family"
         order = taxonomyList[-4] if taxonomyList[-4] else "unknown order"
